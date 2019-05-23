@@ -18,7 +18,10 @@ RUN yum -y install httpd php php-common php-php php \
         php-mcrypt \
 		php-xml \
 		php-soap \
-		html2ps
+		html2ps  
+ RUN       chmod -R g+w /var/www/html
+ RUN       yum clean all && \
+        rm -rf /var/cache/yum 
 RUN echo '<?php phpinfo(); ?>' > /var/www/html/index.php
 EXPOSE 80 443
 
